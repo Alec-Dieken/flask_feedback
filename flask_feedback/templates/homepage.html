@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+
+{%block title%}Secret{%endblock%}
+
+{%block content%}
+    <h1>Username: {{user.username}}</h1>
+    <h2>First Name: {{user.first_name}}</h2>
+    <h2>Last Name: {{user.last_name}}</h2>
+    <h2>Email: {{user.email}}</h2>
+    <form method="POST" action="/users/{{user.username}}/delete">
+        <button>Delete Account</button>
+    </form>
+    <br />
+    <h2>Feedback:</h2>
+    {%for f in feedback%}
+    <h3><a href='/feedback/{{f.id}}/update'>{{f.title}}</a></h3>
+    <h4>{{f.content}}</h4>
+    <br />
+    {%endfor%}
+    <br />
+    <a href="/users/{{user.username}}/feedback/add">Add Feedback</a>
+    <a href="/logout">Logout</a>
+    
+{%endblock%}
